@@ -1,1 +1,27 @@
+const Medium = Object.freeze({
+  OIL: 'OIL',
+  WATERCOLOR: 'WATERCOLOR',
+  ACRYLIC: 'ACRYLIC',
+  PENCIL: 'PENCIL',
+  CHARCOAL: 'CHARCOAL'
+});
 
+class Painter extends Artist {
+  constructor(name, age, medium) {
+    super(name, age);
+    this.specialty = 'Art'; // Painter's specialty is 'Art'
+    this.medium = medium;
+  }
+
+  getDescription() {
+    return `
+Instance of Painter class
+
+Painter's Info:
+Artist Name: ${this.name}
+Age: ${this.age}
+Specialty: ${this.specialty}
+Medium: ${this.medium}
+    `;
+  }
+}
