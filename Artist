@@ -1,1 +1,11 @@
+class Artist {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.specialty = 'Music'; // Default specialty for the Artist base class
+  }
 
+  getDescription() {
+    return `Artist Name: ${this.name}\nAge: ${this.age}\nSpecialty: ${this.specialty}`;
+  }
+}
