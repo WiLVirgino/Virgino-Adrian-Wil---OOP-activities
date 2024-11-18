@@ -1,11 +1,13 @@
-class Artist {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-    this.specialty = 'Music'; // Default specialty for the Artist base class
-  }
+// Creating instances of each derived class:
 
-  getDescription() {
-    return `Artist Name: ${this.name}\nAge: ${this.age}\nSpecialty: ${this.specialty}`;
-  }
-}
+const singer = new Singer('Nayeon Im', 29, Genre.POP);
+console.log(singer.getDescription());
+
+const painter = new Painter('Leonardo da Vinci', 67, Medium.OIL);
+console.log(painter.getDescription());
+
+const writer = new Writer('J.K. Rowling', 58, WritingStyle.FICTION);
+console.log(writer.getDescription());
+
+const dancer = new Dancer('Misty Copeland', 41, DanceStyle.BALLET);
+console.log(dancer.getDescription());
