@@ -1,1 +1,26 @@
+const WritingStyle = Object.freeze({
+  FICTION: 'FICTION',
+  NONFICTION: 'NONFICTION',
+  POETRY: 'POETRY',
+  DRAMA: 'DRAMA'
+});
 
+class Writer extends Artist {
+  constructor(name, age, writingStyle) {
+    super(name, age);
+    this.specialty = 'Writing'; // Writer's specialty is 'Writing'
+    this.writingStyle = writingStyle;
+  }
+
+  getDescription() {
+    return `
+Instance of Writer class
+
+Writer's Info:
+Artist Name: ${this.name}
+Age: ${this.age}
+Specialty: ${this.specialty}
+Writing Style: ${this.writingStyle}
+    `;
+  }
+}
