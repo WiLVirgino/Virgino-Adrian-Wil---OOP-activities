@@ -1,1 +1,28 @@
+const Genre = Object.freeze({
+  POP: 'POP',
+  ROCK: 'ROCK',
+  CLASSICAL: 'CLASSICAL',
+  JAZZ: 'JAZZ',
+  HIPHOP: 'HIPHOP',
+  RNB: 'RNB'
+});
 
+class Singer extends Artist {
+  constructor(name, age, genre) {
+    super(name, age);
+    this.specialty = 'Music'; // Specialty remains 'Music' for Singer class
+    this.genre = genre;
+  }
+
+  getDescription() {
+    return `
+Instance of Singer class
+
+Singer's Info:
+Artist Name: ${this.name}
+Age: ${this.age}
+Specialty: ${this.specialty}
+Genre: ${this.genre}
+    `;
+  }
+}
