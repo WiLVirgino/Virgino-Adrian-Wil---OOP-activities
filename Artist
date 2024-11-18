@@ -1,1 +1,26 @@
+const DanceStyle = Object.freeze({
+  BALLET: 'BALLET',
+  HIPHOP: 'HIPHOP',
+  JAZZ: 'JAZZ',
+  CONTEMPORARY: 'CONTEMPORARY'
+});
 
+class Dancer extends Artist {
+  constructor(name, age, danceStyle) {
+    super(name, age);
+    this.specialty = 'Dance'; // Dancer's specialty is 'Dance'
+    this.danceStyle = danceStyle;
+  }
+
+  getDescription() {
+    return `
+Instance of Dancer class
+
+Dancer's Info:
+Artist Name: ${this.name}
+Age: ${this.age}
+Specialty: ${this.specialty}
+Dance Style: ${this.danceStyle}
+    `;
+  }
+}
