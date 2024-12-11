@@ -1,0 +1,114 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+// Abstract class representing a general water cleaning method
+abstract class WaterCleaning {
+    private String description;
+
+    public WaterCleaning(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    // Abstract method to provide specific cleaning instructions
+    public abstract String getInstructions();
+}
+
+// Class for boiling water cleaning method
+class Boiling extends WaterCleaning {
+    public Boiling() {
+        super("Boiling Water");
+    }
+
+    @Override
+    public String getInstructions() {
+        return "1. Bring water to a rolling boil.\n" +
+               "2. Boil for at least 1 minute (or 3 minutes at higher altitudes).\n" +
+               "3. Let the water cool before using.";
+    }
+}
+
+// Class for filtering water cleaning method
+class Filtering extends WaterCleaning {
+    public Filtering() {
+        super("Filtering Water");
+    }
+
+    @Override
+    public String getInstructions() {
+        return "1. Use a clean cloth or coffee filter to remove large particles.\n" +
+               "2. Use a water filter that meets EPA standards.\n" +
+               "3. Follow the manufacturer's instructions for best results.";
+    }
+}
+
+// Class for chemical treatment cleaning method
+class ChemicalTreatment extends WaterCleaning {
+    public ChemicalTreatment() {
+        super("Chemical Treatment");
+    }
+
+    @Override
+    public String getInstructions() {
+        return "1. Use iodine or chlorine tablets as per package instructions.\n" +
+               "2. Let the water sit for at least 30 minutes before drinking.\n" +
+               "3. Ensure the tablets are fully dissolved.";
+    }
+}
+
+// Main class for managing the water cleaning system
+public class WaterCleaningManagementSystem {
+    private List<WaterCleaning> cleaningMethods;
+
+    public WaterCleaningManagementSystem() {
+        cleaningMethods = new ArrayList<>();
+        // Initialize cleaning methods
+        cleaningMethods.add(new Boiling());
+        cleaningMethods.add(new Filtering());
+        cleaningMethods.add(new ChemicalTreatment());
+    }
+
+    public void displayMethods() {
+        System.out.println("Available Water Cleaning Methods:");
+        for (int i = 0; i < cleaningMethods.size(); i++) {
+            System.out.println((i + 1) + ". " + cleaningMethods.get(i).getDescription());
+        }
+    }
+
+    public void provideInstructions(int choice) {
+        if (choice >= 1 && choice <= cleaningMethods.size()) {
+            System.out.println("\nInstructions for " + cleaningMethods.get(choice - 1).getDescription() + ":");
+            System.out.println(cleaningMethods.get(choice - 1).getInstructions());
+        } else {
+            System.out.println("Invalid choice. Please try again.");
+        }
+    }
+
+    public static void main(String[] args) {
+        WaterCleaningManagementSystem system = new WaterCleaningManagementSystem();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            system.displayMethods();
+            System.out.println("Select a method to view instructions (1-" + system.cleaningMethods.size() + ") or 0 to exit:");
+            int choice;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number.");
+                continue;
+            }
+
+            if (choice == 0) {
+                System.out.println("Exiting the system. Stay safe!");
+                break;
+            }
+            system.provideInstructions(choice);
+        }
+        scanner.close();
+    }
+}
